@@ -12,7 +12,7 @@ python3 -m http.server 8765
 
 ## Fotografias pendentes
 
-Nenhuma foto original foi entregue para o projeto. Por isso, cada área fotográfica usa uma arte vinho e rosé com facetas lapidadas, marcada no HTML com `data-photo-slot`. Ao lado de cada uma há um comentário com o `<img>` pronto para substituí-la. Coloque os arquivos em `assets/`.
+A logo oficial (monograma RA) está em `assets/logo-raquel-amaral.*`. Nenhuma foto original foi entregue para o projeto. Por isso, cada área fotográfica usa uma arte vinho e rosé com facetas lapidadas, marcada no HTML com `data-photo-slot`. Ao lado de cada uma há um comentário com o `<img>` pronto para substituí-la. Coloque os arquivos em `assets/`.
 
 | Slot | Onde | Arquivo sugerido | Formato |
 |---|---|---|---|
@@ -21,7 +21,7 @@ Nenhuma foto original foi entregue para o projeto. Por isso, cada área fotográ
 | `retrato` | apresentação da dentista | `assets/raquel-retrato.jpg` | vertical 4:5, ≥ 900 × 1125 |
 | `localizacao` | seção “O consultório fica no Paraíso” | `assets/recepcao.jpg` | vertical 4:5 |
 
-Recomendações: exporte em JPEG/WebP com qualidade 75–80 e no máximo ~250 KB por arquivo, mantenha `width`/`height` no `<img>` e use `loading="lazy"` em todas as imagens, exceto a da abertura. Ao trocar o retrato, remova o monograma “R” (`.portrait__mono`).
+Recomendações: exporte em JPEG/WebP com qualidade 75–80 e no máximo ~250 KB por arquivo, mantenha `width`/`height` no `<img>` e use `loading="lazy"` em todas as imagens, exceto a da abertura. Ao trocar o retrato, substitua o `<picture>` da logo dentro de `.portrait`.
 
 ## Links configurados
 

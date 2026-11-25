@@ -14,7 +14,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap">
 
   <script type="application/ld+json">
   {
@@ -51,8 +51,8 @@
       --line-light: rgba(36, 32, 33, .16);
       --line-dark: rgba(248, 245, 241, .18);
 
-      --serif: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif;
-      --sans: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --serif: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+      --sans: "Inter Tight", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
       --gutter: max(20px, env(safe-area-inset-left), min(5vw, 72px));
       --gutter-r: max(20px, env(safe-area-inset-right), min(5vw, 72px));
@@ -98,8 +98,9 @@
       font-family: var(--sans); font-size: .75rem; font-weight: 500;
       letter-spacing: .16em; text-transform: uppercase;
     }
-    .display { font-family: var(--serif); font-weight: 400; line-height: .92; letter-spacing: -.01em; }
-    .display em { font-style: italic; }
+    .display { font-family: var(--serif); font-weight: 700; line-height: .94; letter-spacing: -.045em; }
+    .display em { font-style: normal; color: var(--wine); }
+    .on-dark .display em, .hero__sweep em { color: var(--ivory-muted); }
 
     /* ============ Botões e links ============ */
     .btn {
@@ -134,9 +135,11 @@
       padding-top: max(20px, env(safe-area-inset-top)); padding-bottom: 20px;
       border-bottom: 1px solid var(--line-light);
     }
-    .brand { text-decoration: none; display: block; }
-    .brand__name { display: block; font-family: var(--serif); font-size: 1.6rem; line-height: 1.05; }
-    .brand__meta { display: block; margin-top: 6px; font-size: .78rem; letter-spacing: .08em; color: var(--ink-muted); }
+    .brand { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+    .brand__logo img { width: auto; height: 48px; }
+    .brand__text { display: block; }
+    .brand__name { display: block; font-family: var(--serif); font-weight: 700; letter-spacing: -.02em; font-size: 1.125rem; line-height: 1.1; }
+    .brand__meta { display: block; margin-top: 3px; font-size: .75rem; letter-spacing: .08em; color: var(--ink-muted); }
 
     .nav__toggle {
       display: inline-flex; align-items: center; gap: 10px; min-height: 44px; min-width: 44px;
@@ -162,14 +165,14 @@
     /* menu móvel */
     .js .nav__panel[hidden] { display: none; }
     .nav__panel { padding: 8px 0 4px; border-bottom: 1px solid var(--line-light); }
-    .nav__panel .nav__list a { font-family: var(--serif); font-size: 1.75rem; border-top: 1px solid var(--line-light); }
+    .nav__panel .nav__list a { font-family: var(--serif); font-weight: 700; letter-spacing: -.03em; font-size: 1.6rem; border-top: 1px solid var(--line-light); }
     .nav__panel .nav__list li:first-child a { border-top: 0; }
 
     .hero__body { padding-top: clamp(40px, 9vw, 96px); }
     .hero__kicker { color: var(--ink-muted); margin-bottom: 20px; }
-    .hero__title { font-size: clamp(3.6rem, 15.5vw, 9.25rem); }
+    .hero__title { font-size: clamp(3rem, 13vw, 8rem); }
     .hero__title .line { display: block; }
-    .hero__title .line--2 { padding-left: .55em; }
+    .hero__title .line--2 { padding-left: 0; }
     .hero__lede { margin-top: 28px; max-width: 30ch; font-size: clamp(1.0625rem, 1.3vw, 1.25rem); color: var(--ink-muted); }
     .hero__actions { display: flex; flex-direction: column; align-items: stretch; gap: 10px; margin-top: 32px; }
     .hero__actions .link { align-self: flex-start; }
@@ -187,7 +190,7 @@
       .nav__toggle { display: none; }
       .js .nav__panel[hidden], .nav__panel { display: block !important; padding: 0; border: 0; }
       .nav__panel .nav__list { display: flex; gap: 28px; }
-      .nav__panel .nav__list a { font-family: var(--sans); font-size: .9375rem; border: 0; min-height: 44px; }
+      .nav__panel .nav__list a { font-family: var(--sans); font-weight: 500; letter-spacing: 0; font-size: .9375rem; border: 0; min-height: 44px; }
       .hero__actions { flex-direction: row; align-items: center; gap: 28px; }
       .hero__actions .link { align-self: center; }
     }
@@ -198,7 +201,7 @@
       .hero__text .wrap { padding-left: 0; padding-right: 0; max-width: none; margin-inline: 0; }
       .masthead { border-bottom: 0; padding-top: max(32px, env(safe-area-inset-top)); }
       .hero__body { margin-top: auto; padding-top: 48px; }
-      .hero__title { font-size: clamp(5.5rem, 9.4vw, 10rem); }
+      .hero__title { font-size: clamp(5rem, 7.8vw, 8.5rem); }
       .hero__media { height: auto; max-height: none; min-height: 100%; }
     }
 
@@ -228,16 +231,18 @@
     /* ============ 3. A dentista ============ */
     .about { padding-block: clamp(80px, 13vw, 184px); }
     .about__grid { display: grid; grid-template-columns: 104px 1fr; column-gap: 20px; row-gap: 32px; align-items: end; }
-    .portrait { position: relative; aspect-ratio: 4 / 5; background: var(--rose); overflow: hidden; }
+    .portrait { position: relative; aspect-ratio: 4 / 5; background: var(--ink); overflow: hidden; display: grid; place-items: center; }
+    .portrait picture { width: 78%; }
+    .portrait__logo { width: 100%; height: auto; }
     .portrait__mono {
       position: absolute; inset: 0; display: grid; place-items: center;
       font-family: var(--serif); font-style: italic; color: var(--wine); line-height: 1;
       font-size: 5.5rem; padding-bottom: 6%;
     }
     .about__id .eyebrow { color: var(--ink-muted); }
-    .about__title { font-size: clamp(2.6rem, 8vw, 7.5rem); margin-bottom: 14px; }
+    .about__title { font-size: clamp(2.2rem, 6.5vw, 6rem); margin-bottom: 14px; }
     .about__text { grid-column: 1 / -1; }
-    .about__lead { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.18; max-width: 26ch; }
+    .about__lead { font-family: var(--serif); font-weight: 600; letter-spacing: -.03em; font-size: clamp(1.5rem, 2.8vw, 2.5rem); line-height: 1.15; max-width: 24ch; }
     .about__note { margin-top: 24px; max-width: 46ch; color: var(--ink-muted); }
     .areas { margin-top: 40px; border-top: 1px solid var(--line-light); padding-top: 18px; max-width: 46ch; }
     .areas p { font-size: .9375rem; color: var(--ink-muted); }
@@ -257,7 +262,7 @@
 
     /* ============ 4. Tratamentos ============ */
     .treat { background: var(--ink); color: var(--ivory); padding-block: clamp(80px, 12vw, 168px); }
-    .treat__title { font-size: clamp(3.4rem, 13vw, 10.5rem); }
+    .treat__title { font-size: clamp(2.9rem, 12vw, 9rem); }
     .treat__intro { margin-top: 20px; max-width: 34ch; color: var(--ivory-muted); }
     .treat__aside { display: none; }
 
@@ -265,10 +270,10 @@
     .acc__item { border-bottom: 1px solid var(--line-dark); }
     .acc__item h3 { font: inherit; }
     .acc__btn {
-      width: 100%; display: grid; grid-template-columns: 2.4rem 1fr 28px; align-items: center; gap: 8px;
+      width: 100%; display: grid; grid-template-columns: 1fr 28px; align-items: center; gap: 8px;
       padding: 22px 0; min-height: 64px;
       background: none; border: 0; color: var(--ivory); text-align: left; cursor: pointer;
-      font-family: var(--serif); font-size: clamp(1.6rem, 5.4vw, 2.6rem); line-height: 1.1;
+      font-family: var(--serif); font-weight: 600; letter-spacing: -.03em; font-size: clamp(1.35rem, 4.6vw, 2.2rem); line-height: 1.1;
     }
     .acc__num { font-family: var(--sans); font-size: .75rem; letter-spacing: .12em; color: var(--ivory-muted); align-self: start; padding-top: .55em; }
     .acc__icon { position: relative; width: 28px; height: 28px; border: 1px solid var(--line-dark); border-radius: 50%; justify-self: end; }
@@ -278,7 +283,7 @@
     .acc__btn[aria-expanded="true"] .acc__icon::before, .acc__btn[aria-expanded="true"] .acc__icon::after { background: var(--ink); }
     .acc__btn[aria-expanded="true"] .acc__icon::after { transform: rotate(0deg); }
     .acc__btn:hover .acc__label { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
-    .acc__panel { padding: 0 0 28px 2.9rem; max-width: 52ch; color: var(--ivory-muted); }
+    .acc__panel { padding: 0 0 28px 0; max-width: 52ch; color: var(--ivory-muted); }
     .acc__panel p { color: var(--ivory); opacity: .86; }
     @media (prefers-reduced-motion: no-preference) {
       .acc__panel:not([hidden]) { animation: fadeIn .35s ease both; }
@@ -298,14 +303,14 @@
     @media (min-width: 960px) {
       .treat__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: clamp(48px, 7vw, 120px); }
       .treat__head { display: contents; }
-      .treat__title { grid-column: 1 / -1; font-size: clamp(6rem, 11.5vw, 11rem); }
+      .treat__title { grid-column: 1 / -1; font-size: clamp(5.5rem, 9.5vw, 9.5rem); }
       .treat__intro { grid-column: 2; grid-row: 2; margin-top: -8px; }
       .treat__aside { grid-column: 1; grid-row: 3; }
       .treat__list-col { grid-column: 2; grid-row: 3; }
       .treat__aside { display: block; position: sticky; top: 48px; align-self: start; }
       .treat__art { position: relative; margin-top: 40px; aspect-ratio: 4 / 5; max-width: 420px; background: var(--wine); overflow: hidden; }
       .treat__count {
-        position: absolute; left: 24px; bottom: 18px; font-family: var(--serif); font-size: 7rem; line-height: 1;
+        position: absolute; left: 24px; bottom: 18px; font-family: var(--serif); font-weight: 700; letter-spacing: -.05em; font-size: 6rem; line-height: 1;
         color: var(--ivory);
       }
       .acc { margin-top: 0; }
@@ -317,14 +322,14 @@
     .where__grid { display: grid; gap: 40px; }
     .where__media { position: relative; aspect-ratio: 4 / 3; background: var(--rose); overflow: hidden; }
     .where__num {
-      position: absolute; right: 6%; bottom: -4%; font-family: var(--serif); line-height: .8;
+      position: absolute; right: 6%; bottom: -4%; font-family: var(--serif); font-weight: 800; letter-spacing: -.06em; line-height: .8;
       font-size: clamp(9rem, 44vw, 20rem); color: var(--wine);
     }
     .where__num-label {
       position: absolute; left: 20px; top: 18px; color: var(--ink);
       font-size: .75rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
     }
-    .where__title { font-size: clamp(2.6rem, 8vw, 5.75rem); max-width: 11ch; }
+    .where__title { font-size: clamp(2.3rem, 7vw, 5rem); max-width: 12ch; }
     .addr { margin-top: 32px; font-style: normal; border-top: 1px solid var(--line-light); }
     .addr__street { padding-top: 20px; font-size: 1.125rem; }
     .addr__unit {
@@ -348,7 +353,7 @@
 
     /* ============ 6. Encerramento ============ */
     .close { background: var(--ink); color: var(--ivory); padding-top: clamp(80px, 12vw, 160px); }
-    .close__title { font-size: clamp(3rem, 11vw, 8.5rem); max-width: 10ch; }
+    .close__title { font-size: clamp(2.6rem, 9.5vw, 7rem); max-width: 10ch; }
     .close__text { margin-top: 20px; max-width: 34ch; color: var(--ivory-muted); }
 
     .shortcuts { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -373,7 +378,7 @@
         border-radius: 50%; text-decoration: none; padding: 24px;
         transition: background-color .25s ease, box-shadow .25s ease;
       }
-      .circle__label { font-family: var(--serif); line-height: 1; }
+      .circle__label { font-family: var(--serif); font-weight: 700; letter-spacing: -.035em; line-height: 1; }
       .circle__meta { margin-top: 12px; font-size: .8125rem; letter-spacing: .02em; line-height: 1.35; }
       .circle__go { margin-top: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid currentColor; display: grid; place-items: center; }
       .circle__go svg { width: 14px; height: 14px; }
@@ -401,7 +406,8 @@
 
     .footer { margin-top: clamp(72px, 10vw, 140px); border-top: 1px solid var(--line-dark); padding-top: 28px; padding-bottom: max(32px, env(safe-area-inset-bottom)); color: var(--ivory-muted); font-size: .875rem; }
     .footer__row { display: flex; flex-wrap: wrap; gap: 4px 28px; align-items: center; }
-    .footer__name { font-family: var(--serif); font-size: 1.375rem; color: var(--ivory); margin-right: auto; width: 100%; }
+    .footer__logo { display: inline-block; vertical-align: middle; width: auto; height: 40px; margin-right: 10px; }
+    .footer__name { font-family: var(--serif); font-weight: 700; letter-spacing: -.02em; font-size: 1.125rem; color: var(--ivory); margin-right: auto; width: 100%; }
     .footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     .footer a:hover { color: var(--ivory); }
     @media (min-width: 640px) { .footer__name { width: auto; } }
@@ -436,11 +442,11 @@
     .motion .hero__sweep {
       display: block; position: absolute; z-index: 4; left: 0; top: 50%; margin: 0;
       width: max-content; max-width: min(84vw, 15ch);
-      font-family: var(--serif); font-weight: 400; color: var(--ivory);
-      font-size: clamp(2.8rem, 6.6vw, 7.5rem); line-height: .98; letter-spacing: -.01em;
+      font-family: var(--serif); font-weight: 700; letter-spacing: -.04em; color: var(--ivory);
+      font-size: clamp(2.4rem, 5.6vw, 6.2rem); line-height: 1; letter-spacing: -.01em;
       opacity: 0; will-change: transform, opacity;
     }
-    .motion .hero__sweep em { font-style: italic; }
+    .motion .hero__sweep em { font-style: normal; }
     .motion .hero__caption { left: var(--gutter); bottom: max(28px, env(safe-area-inset-bottom)); opacity: 0; }
 
     .motion .about { position: relative; z-index: 2; margin-top: -100vh; padding-block: 0; background: var(--ivory);
@@ -448,7 +454,7 @@
     .motion .about__track { height: 360vh; }
     .motion .about__stage { position: sticky; top: 0; min-height: 100svh; display: flex; align-items: center; overflow: hidden;
       padding-block: max(56px, env(safe-area-inset-top)) 48px; }
-    .motion .about__expand { display: block; position: absolute; inset: 0; z-index: 3; background: var(--rose); clip-path: inset(50%); pointer-events: none; }
+    .motion .about__expand { display: block; position: absolute; inset: 0; z-index: 3; background: var(--ink); clip-path: inset(50%); pointer-events: none; }
     .motion [data-words] .w { transition: opacity .12s linear; }
 
     .motion .treat { position: relative; z-index: 3; margin-top: -100vh; }
@@ -541,8 +547,14 @@
       <div class="hero__text">
         <div class="masthead wrap">
           <a class="brand" href="#topo" aria-label="Dra. Raquel Amaral, Ortodontia, CRO-SP 58881 — início da página">
-            <span class="brand__name">Dra. Raquel Amaral</span>
-            <span class="brand__meta">Ortodontia · CRO-SP&nbsp;58881</span>
+            <picture class="brand__logo">
+              <source srcset="assets/logo-raquel-amaral-sm.webp" type="image/webp">
+              <img src="assets/logo-raquel-amaral.png" width="734" height="614" alt="" fetchpriority="high">
+            </picture>
+            <span class="brand__text">
+              <span class="brand__name">Dra. Raquel Amaral</span>
+              <span class="brand__meta">Ortodontia · CRO-SP&nbsp;58881</span>
+            </span>
           </a>
           <nav aria-label="Principal">
             <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" hidden>
@@ -560,7 +572,6 @@
         </div>
 
         <div class="hero__body wrap" id="conteudo">
-          <p class="eyebrow hero__kicker">Adultos e crianças · Paraíso, São Paulo</p>
           <h1 class="display hero__title">
             <span class="line line--1">Ortodontia</span>
             <span class="line line--2"><em>no Paraíso.</em></span>
@@ -583,15 +594,7 @@
           -->
           <div class="hero__media" data-photo-slot="abertura">
             <svg class="facets hero__art" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" style="color:#E9C9BF">
-              <g stroke="currentColor" fill="none" stroke-width="1">
-                <line x1="72" y1="0" x2="72" y2="900" opacity=".35"/>
-                <line x1="0" y1="742" x2="600" y2="742" opacity=".35"/>
-                <circle cx="72" cy="742" r="6" fill="currentColor" stroke="none" opacity=".9"/>
-                <line x1="300" y1="200" x2="-120" y2="900" opacity=".18"/>
-                <line x1="300" y1="200" x2="760" y2="900" opacity=".18"/>
-              </g>
               <g class="gem3d" data-gem3d data-cx="350" data-cy="382" data-r="288" data-op=".95" data-speed="1"><use href="#gem" x="-10" y="130" width="720" height="648" opacity=".9"/></g>
-              <use href="#gem" x="368" y="64" width="150" height="135" opacity=".55"/>
             </svg>
 
             <!--
@@ -600,13 +603,7 @@
             -->
             <div class="hero__over" data-photo-slot="consultorio" aria-hidden="true">
               <svg class="facets" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#E9C9BF">
-                <g stroke="currentColor" fill="none" stroke-width="1" opacity=".22">
-                  <path d="M0 520 950 380 1440 470"/>
-                  <path d="M0 160 950 380 1440 120"/>
-                  <path d="M260 760 950 380 1200 760"/>
-                  <path d="M420 0 950 380 1100 0"/>
-                </g>
-                <use href="#gem" x="-180" y="120" width="760" height="684" opacity=".38"/>
+                
                 <rect x="900" y="170" width="300" height="375" fill="rgba(36,32,33,.16)" stroke="currentColor" stroke-opacity=".55"/>
                 <g class="gem3d" data-gem3d data-cx="1050" data-cy="340" data-r="110" data-op=".9" data-speed="-1.3"><use href="#gem" x="912" y="228" width="276" height="248" opacity=".85"/></g>
               </svg>
@@ -631,11 +628,11 @@
           RETRATO — substitua pelo retrato vertical original:
           <img class="photo" src="assets/raquel-retrato.jpg" width="900" height="1125" alt="Retrato da Dra. Raquel Amaral" loading="lazy" decoding="async" style="object-position: 50% 20%">
         -->
-        <div class="portrait" data-photo-slot="retrato" aria-hidden="true">
-          <svg class="facets" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#653C49">
-            <use href="#gem" x="-60" y="300" width="520" height="468" opacity=".28"/>
-          </svg>
-          <span class="portrait__mono">R</span>
+        <div class="portrait" data-photo-slot="retrato">
+          <picture>
+            <source srcset="assets/logo-raquel-amaral.webp" type="image/webp">
+            <img class="portrait__logo" src="assets/logo-raquel-amaral.png" width="734" height="614" alt="Logotipo Raquel Amaral Ortodontia" loading="lazy" decoding="async">
+          </picture>
         </div>
 
         <div class="about__id" data-reveal>
@@ -645,11 +642,7 @@
 
         <div class="about__text">
           <p class="about__lead" data-words>No consultório do Paraíso, a Dra. Raquel atende adultos e crianças.</p>
-          <p class="about__note" data-words>Sua atuação reúne ortodontia, ortopedia funcional dos maxilares, estética dental e clínica geral. Se você quer entender as possibilidades para o seu sorriso, ou para o do seu filho, a primeira conversa pode começar por mensagem.</p>
-          <div class="areas" data-reveal style="--d:.2s">
-            <span class="eyebrow">Áreas de atuação</span>
-            <p>Ortodontia · Invisalign Doctor · Ortopedia funcional dos maxilares · Estética dental · Clínica geral para adultos e crianças</p>
-          </div>
+          <p class="about__note" data-words>Sua atuação reúne ortodontia, ortopedia funcional dos maxilares, estética dental e clínica geral.</p>
         </div>
       </div>
       </div>
@@ -661,7 +654,6 @@
       <div class="wrap treat__grid">
         <div class="treat__head">
           <h2 class="display treat__title" id="treat-title" data-slide>Tratamentos</h2>
-          <p class="treat__intro" data-reveal style="--d:.08s">Cinco frentes de atendimento. Toque em cada uma para ler mais.</p>
           <div class="treat__aside" aria-hidden="true">
             <div class="treat__art">
               <svg class="facets" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#E9C9BF">
@@ -676,27 +668,26 @@
         <div class="treat__list-col">
           <div class="acc" data-acc>
             <div class="acc__item" data-reveal style="--d:0.10s">
-              <h3><button class="acc__btn" type="button" aria-expanded="true" aria-controls="t1" id="t1-btn"><span class="acc__num" aria-hidden="true">01</span><span class="acc__label">Ortodontia</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="true" aria-controls="t1" id="t1-btn"><span class="acc__label">Ortodontia</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t1" role="region" aria-labelledby="t1-btn"><p>Avaliação do alinhamento dos dentes e da mordida. Na consulta, você pode conversar sobre as opções de acompanhamento para o seu caso.</p></div>
             </div>
             <div class="acc__item" data-reveal style="--d:0.16s">
-              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t2" id="t2-btn"><span class="acc__num" aria-hidden="true">02</span><span class="acc__label">Alinhadores Invisalign</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t2" id="t2-btn"><span class="acc__label">Alinhadores Invisalign</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t2" role="region" aria-labelledby="t2-btn" hidden><p>Quer saber se os alinhadores são uma opção para você? A indicação depende de uma avaliação individual.</p></div>
             </div>
             <div class="acc__item" data-reveal style="--d:0.22s">
-              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t3" id="t3-btn"><span class="acc__num" aria-hidden="true">03</span><span class="acc__label">Ortopedia funcional dos maxilares</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t3" id="t3-btn"><span class="acc__label">Ortopedia funcional dos maxilares</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t3" role="region" aria-labelledby="t3-btn" hidden><p>Avaliação do desenvolvimento dos maxilares e da mordida, com orientação sobre o acompanhamento indicado.</p></div>
             </div>
             <div class="acc__item" data-reveal style="--d:0.28s">
-              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t4" id="t4-btn"><span class="acc__num" aria-hidden="true">04</span><span class="acc__label">Estética dental</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t4" id="t4-btn"><span class="acc__label">Estética dental</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t4" role="region" aria-labelledby="t4-btn" hidden><p>Uma consulta para conversar sobre o que você gostaria de mudar na aparência dos dentes e conhecer as possibilidades para o seu caso.</p></div>
             </div>
             <div class="acc__item" data-reveal style="--d:0.34s">
-              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t5" id="t5-btn"><span class="acc__num" aria-hidden="true">05</span><span class="acc__label">Clínica geral</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t5" id="t5-btn"><span class="acc__label">Clínica geral</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t5" role="region" aria-labelledby="t5-btn" hidden><p>Atendimento para adultos e crianças que desejam cuidar da saúde bucal ou avaliar uma queixa específica.</p></div>
             </div>
           </div>
-          <button class="acc__all" type="button" data-acc-all aria-controls="t1 t2 t3 t4 t5">Abrir todos</button>
 
           <p class="treat__cta" data-reveal>
             <a class="link" href="https://wa.me/5511984093430?text=Ol%C3%A1%21%20Vi%20os%20tratamentos%20no%20site%20da%20Dra.%20Raquel%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener">Conversar sobre um tratamento <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#ico-arrow"/></svg><span class="sr-only"> (abre o WhatsApp)</span></a>
@@ -714,26 +705,23 @@
         -->
         <div class="where__media" data-photo-slot="localizacao" aria-hidden="true">
           <svg class="facets" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#653C49">
-            <line x1="0" y1="60" x2="400" y2="60" stroke="currentColor" opacity=".25"/>
             <g class="gem3d" data-gem3d data-cx="300" data-cy="185" data-r="120" data-op=".45" data-speed="-.9"><use href="#gem" x="150" y="80" width="300" height="270" opacity=".3"/></g>
           </svg>
-          <span class="where__num-label">Conjunto</span>
-          <span class="where__num">85</span>
+                    <span class="where__num">85</span>
         </div>
 
         <div>
           <h2 class="display where__title" id="where-title"><span class="split split--l">O consultório fica</span> <span class="split split--r"><em>no Paraíso</em></span></h2>
           <address class="addr" data-reveal style="--d:.08s">
-            <p class="addr__street">Praça Oswaldo Cruz, 47</p>
-            <p class="addr__unit"><small>Conjunto</small> 85</p>
-            <p class="addr__city">Paraíso · São Paulo – SP<br>CEP 04004-070</p>
+            <p class="addr__street">Praça Oswaldo Cruz, 47 · <strong>Conjunto 85</strong></p>
+            <p class="addr__city">Paraíso · São Paulo – SP · CEP 04004-070</p>
           </address>
           <div class="where__actions" data-reveal style="--d:.16s">
             <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pra%C3%A7a+Oswaldo+Cruz%2C+47%2C+Para%C3%ADso%2C+S%C3%A3o+Paulo%2C+SP%2C+04004-070" target="_blank" rel="noopener">
               <svg aria-hidden="true"><use href="#ico-pin"/></svg>
               Traçar rota no Google Maps<span class="sr-only"> (abre em nova aba)</span>
             </a>
-            <a class="phone" href="tel:+5511984093430"><span>Telefone e WhatsApp</span><span>(11) 98409-3430</span></a>
+            <a class="phone" href="tel:+5511984093430"><span>(11) 98409-3430</span></a>
           </div>
         </div>
       </div>
@@ -746,7 +734,6 @@
       <div class="wrap close__grid">
         <div>
           <h2 class="display close__title" id="close-title"><span class="split split--l">Vamos marcar</span> <span class="split split--r">sua <em>avaliação?</em></span></h2>
-          <p class="close__text" data-reveal style="--d:.08s">Mande uma mensagem e combine o melhor horário com o consultório.</p>
         </div>
 
         <!-- Celular e tablet -->
@@ -767,20 +754,16 @@
 
         <!-- Desktop: três círculos -->
         <div class="circles" data-circles>
-          <span class="circles__ring" aria-hidden="true"></span>
           <a class="circle circle--wa" href="https://wa.me/5511984093430?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Dra.%20Raquel%20Amaral%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
             <span class="circle__label">WhatsApp</span>
-            <span class="circle__meta">Agendar uma avaliação<br>(11) 98409-3430</span>
             <span class="circle__go" aria-hidden="true"><svg><use href="#ico-arrow"/></svg></span>
           </a>
           <a class="circle circle--ig" href="https://www.instagram.com/draraquelamaralortodontia/" target="_blank" rel="noopener">
             <span class="circle__label">Instagram</span>
-            <span class="circle__meta">@draraquelamaral<wbr>ortodontia</span>
             <span class="sr-only"> (abre em nova aba)</span>
           </a>
           <a class="circle circle--map" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pra%C3%A7a+Oswaldo+Cruz%2C+47%2C+Para%C3%ADso%2C+S%C3%A3o+Paulo%2C+SP%2C+04004-070" target="_blank" rel="noopener">
             <span class="circle__label">Como chegar</span>
-            <span class="circle__meta">Praça Oswaldo Cruz, 47<br>Conjunto 85</span>
             <span class="sr-only"> (abre o Google Maps)</span>
           </a>
         </div>
@@ -790,7 +773,7 @@
 
       <footer class="footer wrap">
         <div class="footer__row">
-          <p class="footer__name">Dra. Raquel Amaral</p>
+          <p class="footer__name"><img class="footer__logo" src="assets/logo-raquel-amaral-sm.webp" width="367" height="307" alt="" loading="lazy" decoding="async"> Dra. Raquel Amaral</p>
           <p>CRO-SP&nbsp;58881</p>
           <a href="mailto:raquelfteixeira@gmail.com">raquelfteixeira@gmail.com</a>
           <a href="https://www.facebook.com/Draraquelortodontia" target="_blank" rel="noopener">Facebook<span class="sr-only"> (abre em nova aba)</span></a>
@@ -842,32 +825,18 @@
     /* ---------- Acordeão ---------- */
     var acc = document.querySelector('[data-acc]');
     var btns = Array.prototype.slice.call(acc.querySelectorAll('.acc__btn'));
-    var allBtn = document.querySelector('[data-acc-all]');
     var count = document.querySelector('[data-count]');
     function setItem(btn, open) {
       btn.setAttribute('aria-expanded', String(open));
       document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
-    }
-    function refresh() {
-      var openOnes = btns.filter(function (b) { return b.getAttribute('aria-expanded') === 'true'; });
-      allBtn.textContent = openOnes.length === btns.length ? 'Recolher todos' : 'Abrir todos';
-      allBtn.setAttribute('aria-expanded', String(openOnes.length === btns.length));
     }
     btns.forEach(function (btn, i) {
       btn.addEventListener('click', function () {
         var open = btn.getAttribute('aria-expanded') !== 'true';
         setItem(btn, open);
         if (open && count) { count.textContent = '0' + (i + 1); count.classList.remove('flip'); void count.offsetWidth; count.classList.add('flip'); }
-        refresh();
       });
     });
-    allBtn.addEventListener('click', function () {
-      var openAll = allBtn.getAttribute('aria-expanded') !== 'true';
-      btns.forEach(function (b) { setItem(b, openAll); });
-      if (count) count.textContent = '01';
-      refresh();
-    });
-    refresh();
 
     /* ---------- Diamante lapidado em 3D ---------- */
     var SVGNS = 'http://www.w3.org/2000/svg';
@@ -995,7 +964,7 @@
       words = words.concat(Array.prototype.slice.call(el.querySelectorAll('.w')));
     });
     var lastFill = -1;
-    var rose = [233, 201, 191], ink = [36, 32, 33];
+    var rose = [36, 32, 33], ink = [36, 32, 33];
     function about() {
       pinTop(aboutStage);
       var p = phase(aboutTrack), f = seg(p, .04, .5);
@@ -1041,7 +1010,6 @@
       { el: $('.circle--ig'),  dx: .55,  dy: -.8, a: .26 },
       { el: $('.circle--map'), dx: .6,   dy: .8,  a: .32 }
     ];
-    var ring = $('.circles__ring');
     function close() {
       var p, e;
       if (wide.matches) { p = progress(closeTrack); e = out(seg(p, 0, .38)); }
@@ -1053,8 +1021,6 @@
         var k = 1 - out(seg(p, c.a, c.a + .38));
         c.el.style.transform = k > 0 ? 'translate3d(' + (c.dx * W * k).toFixed(1) + 'px,' + (c.dy * H * k).toFixed(1) + 'px,0) scale(' + (1 - .35 * k).toFixed(3) + ')' : '';
       });
-      ring.style.transform = 'scale(' + (.6 + .4 * out(seg(p, .3, .8))).toFixed(3) + ')';
-      ring.style.opacity = seg(p, .3, .7).toFixed(3);
     }
 
     /* Atalho fixo do WhatsApp */
