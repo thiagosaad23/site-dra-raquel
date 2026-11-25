@@ -391,13 +391,11 @@
       .circle:focus-visible { outline: 2px solid var(--ivory); outline-offset: 6px; }
       .circles__ring { position: absolute; left: 30%; top: 150px; width: 420px; height: 420px; border: 1px solid var(--line-dark); border-radius: 50%; pointer-events: none; }
 
-      .js .circles:not(.is-in) .circle { opacity: 0; transform: translateY(18px); }
-      .circle { transition: opacity .7s var(--ease), transform .7s var(--ease), background-color .25s ease, box-shadow .25s ease; }
+      .circle { transition: background-color .25s ease, box-shadow .25s ease; }
       .circle--map { transition-delay: .08s, .08s, 0s, 0s; }
       .circle--ig { transition-delay: .16s, .16s, 0s, 0s; }
     }
     @media (min-width: 960px) and (prefers-reduced-motion: reduce) {
-      .js .circles:not(.is-in) .circle { opacity: 1; transform: none; }
       .circle { transition: background-color .2s ease, box-shadow .2s ease; }
     }
 
@@ -407,6 +405,35 @@
     .footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     .footer a:hover { color: var(--ivory); }
     @media (min-width: 640px) { .footer__name { width: auto; } }
+
+
+    /* ============ Movimento 3D ============ */
+    html { overflow-x: clip; }
+    body { overflow-x: clip; }
+    .gem3d line { stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+    [data-tilt] { transform-origin: 50% 0; will-change: transform; }
+    [data-hero-media] { will-change: transform; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .js [data-reveal] {
+        opacity: 0;
+        transform: perspective(900px) translate3d(0, 36px, -60px) rotateX(16deg);
+        transform-origin: 50% 100%;
+        transition: opacity .8s var(--ease), transform 1s var(--ease);
+        transition-delay: var(--d, 0s);
+      }
+      .js [data-reveal="turn"] {
+        transform: perspective(1100px) rotateY(-22deg) translate3d(-24px, 0, -80px);
+        transform-origin: 0 50%;
+      }
+      .js [data-reveal].is-in { opacity: 1; transform: none; }
+
+      .js .circles:not(.is-in) .circle { opacity: 0; transform: perspective(900px) translate3d(0, 24px, -120px) rotateX(28deg); }
+      .js .circles .circle { transition: opacity .8s var(--ease), transform 1.1s var(--ease), background-color .25s ease, box-shadow .25s ease; }
+
+      .treat__count.flip { animation: flip .6s var(--ease); }
+      @keyframes flip { from { transform: perspective(400px) rotateX(-90deg); opacity: 0; } to { transform: none; opacity: 1; } }
+    }
 
     /* ============ Atalho fixo do WhatsApp (celular) ============ */
     .dock {
@@ -507,7 +534,7 @@
         <img class="photo" src="assets/raquel-cadeira.jpg" width="1200" height="1600" alt="Dra. Raquel Amaral ao lado da cadeira de atendimento no consultório" fetchpriority="high" style="object-position: 50% 25%">
         (Ajuste object-position para manter o rosto no enquadramento.)
       -->
-      <div class="hero__media" data-photo-slot="abertura" aria-hidden="true">
+      <div class="hero__media" data-hero-media data-photo-slot="abertura" aria-hidden="true">
         <svg class="facets" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#E9C9BF">
           <g stroke="currentColor" fill="none" stroke-width="1">
             <line x1="72" y1="0" x2="72" y2="900" opacity=".35"/>
@@ -516,7 +543,7 @@
             <line x1="300" y1="200" x2="-120" y2="900" opacity=".18"/>
             <line x1="300" y1="200" x2="760" y2="900" opacity=".18"/>
           </g>
-          <use href="#gem" x="-10" y="130" width="720" height="648" opacity=".9"/>
+          <g class="gem3d" data-gem3d data-cx="350" data-cy="382" data-r="288" data-op=".95" data-speed="1"><use href="#gem" x="-10" y="130" width="720" height="648" opacity=".9"/></g>
           <use href="#gem" x="368" y="64" width="150" height="135" opacity=".55"/>
         </svg>
       </div>
@@ -525,7 +552,7 @@
 
   <main>
     <!-- ================= 2. TRANSIÇÃO ================= -->
-    <section class="scene on-dark" aria-label="O consultório">
+    <section class="scene on-dark" aria-label="O consultório" data-tilt>
       <div class="scene__inner" data-zoom>
         <svg class="facets" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" style="color:#E9C9BF">
           <g stroke="currentColor" fill="none" stroke-width="1" opacity=".22">
@@ -543,7 +570,7 @@
         -->
         <div class="scene__frame" data-photo-slot="recepcao" aria-hidden="true">
           <svg class="facets" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#E9C9BF">
-            <use href="#gem" x="40" y="110" width="320" height="288" opacity=".85"/>
+            <g class="gem3d" data-gem3d data-cx="200" data-cy="222" data-r="128" data-op=".9" data-speed="-1.3"><use href="#gem" x="40" y="110" width="320" height="288" opacity=".85"/></g>
           </svg>
         </div>
       </div>
@@ -557,22 +584,22 @@
           RETRATO — substitua pelo retrato vertical original:
           <img class="photo" src="assets/raquel-retrato.jpg" width="900" height="1125" alt="Retrato da Dra. Raquel Amaral" loading="lazy" decoding="async" style="object-position: 50% 20%">
         -->
-        <div class="portrait" data-photo-slot="retrato" aria-hidden="true">
+        <div class="portrait" data-reveal="turn" data-photo-slot="retrato" aria-hidden="true">
           <svg class="facets" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#653C49">
             <use href="#gem" x="-60" y="300" width="520" height="468" opacity=".28"/>
           </svg>
           <span class="portrait__mono">R</span>
         </div>
 
-        <div class="about__id">
+        <div class="about__id" data-reveal>
           <h2 class="display about__title" id="about-title">Dra. Raquel Amaral</h2>
           <p class="eyebrow">Cirurgiã-dentista · CRO-SP&nbsp;58881</p>
         </div>
 
         <div class="about__text">
-          <p class="about__lead">No consultório do Paraíso, a Dra. Raquel atende adultos e crianças.</p>
-          <p class="about__note">Sua atuação reúne ortodontia, ortopedia funcional dos maxilares, estética dental e clínica geral. Se você quer entender as possibilidades para o seu sorriso, ou para o do seu filho, a primeira conversa pode começar por mensagem.</p>
-          <div class="areas">
+          <p class="about__lead" data-reveal style="--d:.08s">No consultório do Paraíso, a Dra. Raquel atende adultos e crianças.</p>
+          <p class="about__note" data-reveal style="--d:.14s">Sua atuação reúne ortodontia, ortopedia funcional dos maxilares, estética dental e clínica geral. Se você quer entender as possibilidades para o seu sorriso, ou para o do seu filho, a primeira conversa pode começar por mensagem.</p>
+          <div class="areas" data-reveal style="--d:.2s">
             <span class="eyebrow">Áreas de atuação</span>
             <p>Ortodontia · Invisalign Doctor · Ortopedia funcional dos maxilares · Estética dental · Clínica geral para adultos e crianças</p>
           </div>
@@ -581,16 +608,16 @@
     </section>
 
     <!-- ================= 4. TRATAMENTOS ================= -->
-    <section class="treat on-dark" id="tratamentos" aria-labelledby="treat-title">
+    <section class="treat on-dark" id="tratamentos" aria-labelledby="treat-title" data-tilt>
       <div class="wrap treat__grid">
         <div class="treat__head">
-          <h2 class="display treat__title" id="treat-title">Tratamentos</h2>
-          <p class="treat__intro">Cinco frentes de atendimento. Toque em cada uma para ler mais.</p>
+          <h2 class="display treat__title" id="treat-title" data-reveal>Tratamentos</h2>
+          <p class="treat__intro" data-reveal style="--d:.08s">Cinco frentes de atendimento. Toque em cada uma para ler mais.</p>
           <div class="treat__aside" aria-hidden="true">
             <div class="treat__art">
               <svg class="facets" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#E9C9BF">
                 <line x1="0" y1="96" x2="400" y2="96" stroke="currentColor" opacity=".3"/>
-                <use href="#gem" x="-20" y="130" width="440" height="396" opacity=".55"/>
+                <g class="gem3d" data-gem3d data-cx="200" data-cy="284" data-r="176" data-op=".7" data-speed=".8"><use href="#gem" x="-20" y="130" width="440" height="396" opacity=".55"/></g>
               </svg>
               <span class="treat__count" data-count>01</span>
             </div>
@@ -599,30 +626,30 @@
 
         <div class="treat__list-col">
           <div class="acc" data-acc>
-            <div class="acc__item">
+            <div class="acc__item" data-reveal style="--d:0.10s">
               <h3><button class="acc__btn" type="button" aria-expanded="true" aria-controls="t1" id="t1-btn"><span class="acc__num" aria-hidden="true">01</span><span class="acc__label">Ortodontia</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t1" role="region" aria-labelledby="t1-btn"><p>Avaliação do alinhamento dos dentes e da mordida. Na consulta, você pode conversar sobre as opções de acompanhamento para o seu caso.</p></div>
             </div>
-            <div class="acc__item">
+            <div class="acc__item" data-reveal style="--d:0.16s">
               <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t2" id="t2-btn"><span class="acc__num" aria-hidden="true">02</span><span class="acc__label">Alinhadores Invisalign</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t2" role="region" aria-labelledby="t2-btn" hidden><p>Quer saber se os alinhadores são uma opção para você? A indicação depende de uma avaliação individual.</p></div>
             </div>
-            <div class="acc__item">
+            <div class="acc__item" data-reveal style="--d:0.22s">
               <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t3" id="t3-btn"><span class="acc__num" aria-hidden="true">03</span><span class="acc__label">Ortopedia funcional dos maxilares</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t3" role="region" aria-labelledby="t3-btn" hidden><p>Avaliação do desenvolvimento dos maxilares e da mordida, com orientação sobre o acompanhamento indicado.</p></div>
             </div>
-            <div class="acc__item">
+            <div class="acc__item" data-reveal style="--d:0.28s">
               <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t4" id="t4-btn"><span class="acc__num" aria-hidden="true">04</span><span class="acc__label">Estética dental</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t4" role="region" aria-labelledby="t4-btn" hidden><p>Uma consulta para conversar sobre o que você gostaria de mudar na aparência dos dentes e conhecer as possibilidades para o seu caso.</p></div>
             </div>
-            <div class="acc__item">
+            <div class="acc__item" data-reveal style="--d:0.34s">
               <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t5" id="t5-btn"><span class="acc__num" aria-hidden="true">05</span><span class="acc__label">Clínica geral</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t5" role="region" aria-labelledby="t5-btn" hidden><p>Atendimento para adultos e crianças que desejam cuidar da saúde bucal ou avaliar uma queixa específica.</p></div>
             </div>
           </div>
           <button class="acc__all" type="button" data-acc-all aria-controls="t1 t2 t3 t4 t5">Abrir todos</button>
 
-          <p class="treat__cta">
+          <p class="treat__cta" data-reveal>
             <a class="link" href="https://wa.me/5511984093430?text=Ol%C3%A1%21%20Vi%20os%20tratamentos%20no%20site%20da%20Dra.%20Raquel%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener">Conversar sobre um tratamento <svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#ico-arrow"/></svg><span class="sr-only"> (abre o WhatsApp)</span></a>
           </p>
         </div>
@@ -636,23 +663,23 @@
           FOTO DA RECEPÇÃO — substitua o painel pelo original:
           <img class="photo" src="assets/recepcao.jpg" width="1200" height="1500" alt="Recepção do consultório, na Praça Oswaldo Cruz, 47, conjunto 85" loading="lazy" decoding="async">
         -->
-        <div class="where__media" data-photo-slot="localizacao" aria-hidden="true">
+        <div class="where__media" data-reveal="turn" data-photo-slot="localizacao" aria-hidden="true">
           <svg class="facets" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#653C49">
             <line x1="0" y1="60" x2="400" y2="60" stroke="currentColor" opacity=".25"/>
-            <use href="#gem" x="150" y="80" width="300" height="270" opacity=".3"/>
+            <g class="gem3d" data-gem3d data-cx="300" data-cy="185" data-r="120" data-op=".45" data-speed="-.9"><use href="#gem" x="150" y="80" width="300" height="270" opacity=".3"/></g>
           </svg>
           <span class="where__num-label">Conjunto</span>
           <span class="where__num">85</span>
         </div>
 
         <div>
-          <h2 class="display where__title" id="where-title">O consultório fica <em>no Paraíso</em></h2>
-          <address class="addr">
+          <h2 class="display where__title" id="where-title" data-reveal>O consultório fica <em>no Paraíso</em></h2>
+          <address class="addr" data-reveal style="--d:.08s">
             <p class="addr__street">Praça Oswaldo Cruz, 47</p>
             <p class="addr__unit"><small>Conjunto</small> 85</p>
             <p class="addr__city">Paraíso · São Paulo – SP<br>CEP 04004-070</p>
           </address>
-          <div class="where__actions">
+          <div class="where__actions" data-reveal style="--d:.16s">
             <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pra%C3%A7a+Oswaldo+Cruz%2C+47%2C+Para%C3%ADso%2C+S%C3%A3o+Paulo%2C+SP%2C+04004-070" target="_blank" rel="noopener">
               <svg aria-hidden="true"><use href="#ico-pin"/></svg>
               Traçar rota no Google Maps<span class="sr-only"> (abre em nova aba)</span>
@@ -664,15 +691,15 @@
     </section>
 
     <!-- ================= 6. ENCERRAMENTO ================= -->
-    <section class="close on-dark" id="contato" aria-labelledby="close-title">
+    <section class="close on-dark" id="contato" aria-labelledby="close-title" data-tilt>
       <div class="wrap close__grid">
         <div>
-          <h2 class="display close__title" id="close-title">Vamos marcar sua <em>avaliação?</em></h2>
-          <p class="close__text">Mande uma mensagem e combine o melhor horário com o consultório.</p>
+          <h2 class="display close__title" id="close-title" data-reveal>Vamos marcar sua <em>avaliação?</em></h2>
+          <p class="close__text" data-reveal style="--d:.08s">Mande uma mensagem e combine o melhor horário com o consultório.</p>
         </div>
 
         <!-- Celular e tablet -->
-        <div class="shortcuts">
+        <div class="shortcuts" data-reveal style="--d:.14s">
           <a class="shortcut shortcut--wa" href="https://wa.me/5511984093430?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Dra.%20Raquel%20Amaral%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
             <span class="shortcut__dot" aria-hidden="true"><svg><use href="#ico-wa"/></svg></span>
             <span class="shortcut__label">Agendar pelo WhatsApp</span>
@@ -777,7 +804,7 @@
       btn.addEventListener('click', function () {
         var open = btn.getAttribute('aria-expanded') !== 'true';
         setItem(btn, open);
-        if (open && count) count.textContent = '0' + (i + 1);
+        if (open && count) { count.textContent = '0' + (i + 1); count.classList.remove('flip'); void count.offsetWidth; count.classList.add('flip'); }
         refresh();
       });
     });
@@ -816,6 +843,103 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     frame();
+
+
+    /* ---------- Diamante lapidado em 3D ---------- */
+    var SVGNS = 'http://www.w3.org/2000/svg';
+    var GEM = (function () {
+      var V = [], E = [], n = 8, i, a;
+      for (i = 0; i < n; i++) { a = i * Math.PI * 2 / n; V.push([0.56 * Math.cos(a), -0.44, 0.56 * Math.sin(a)]); }          // mesa
+      for (i = 0; i < n * 2; i++) { a = i * Math.PI / n; V.push([Math.cos(a), 0, Math.sin(a)]); }                            // cintura
+      V.push([0, 1.25, 0]);                                                                                                // culaça
+      var g = function (j) { return n + ((j + n * 2) % (n * 2)); }, c = n * 3;
+      for (i = 0; i < n; i++) {
+        E.push([i, (i + 1) % n]);                    // contorno da mesa
+        E.push([i, g(2 * i)], [i, g(2 * i + 1)], [i, g(2 * i - 1)]); // coroa
+      }
+      for (i = 0; i < n * 2; i++) { E.push([g(i), g(i + 1)]); E.push([g(i), c]); } // cintura e pavilhão
+      return { V: V, E: E };
+    })();
+    var gems = Array.prototype.map.call(document.querySelectorAll('[data-gem3d]'), function (el) {
+      el.innerHTML = '';
+      var lines = GEM.E.map(function () { var l = document.createElementNS(SVGNS, 'line'); el.appendChild(l); return l; });
+      return { el: el, lines: lines, cx: +el.dataset.cx, cy: +el.dataset.cy, r: +el.dataset.r, op: +el.dataset.op || 1,
+               speed: +el.dataset.speed || 1, host: el.closest('svg'), visible: true };
+    });
+    function drawGem(gm, theta) {
+      var tilt = 0.2, ct = Math.cos(tilt), st = Math.sin(tilt), c = Math.cos(theta), s2 = Math.sin(theta), D = 5;
+      var P = GEM.V.map(function (v) {
+        var x = v[0] * c + v[2] * s2, z = -v[0] * s2 + v[2] * c;
+        var y = v[1] * ct - z * st, zz = v[1] * st + z * ct;
+        var f = D / (D + zz);
+        return [gm.cx + x * f * gm.r, gm.cy + y * f * gm.r, zz];
+      });
+      GEM.E.forEach(function (e, k) {
+        var A = P[e[0]], B = P[e[1]], l = gm.lines[k];
+        var depth = Math.max(0, Math.min(1, ((A[2] + B[2]) / 2 + 1) / 2));
+        l.setAttribute('x1', A[0].toFixed(1)); l.setAttribute('y1', A[1].toFixed(1));
+        l.setAttribute('x2', B[0].toFixed(1)); l.setAttribute('y2', B[1].toFixed(1));
+        l.setAttribute('stroke-opacity', (gm.op * (1 - depth * 0.72)).toFixed(3));
+      });
+    }
+    if ('IntersectionObserver' in window) {
+      var gio = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { gems.forEach(function (gm) { if (gm.host === en.target) gm.visible = en.isIntersecting; }); });
+        kick();
+      }, { rootMargin: '80px' });
+      gems.forEach(function (gm) { gio.observe(gm.host); });
+    }
+
+    /* ---------- Entradas em perspectiva ---------- */
+    var reveals = document.querySelectorAll('[data-reveal]');
+    if (reduce.matches || !('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(reveals, function (el) { el.classList.add('is-in'); });
+    } else {
+      var rio = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); rio.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      Array.prototype.forEach.call(reveals, function (el) { rio.observe(el); });
+    }
+
+    /* ---------- Inclinações ligadas à rolagem ---------- */
+    var heroMedia = document.querySelector('[data-hero-media]');
+    var hero = document.querySelector('.hero');
+    var tilts = Array.prototype.slice.call(document.querySelectorAll('[data-tilt]'));
+    var wide = window.matchMedia('(min-width: 960px)');
+    var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+    var t0 = performance.now(), loopOn = false;
+    function motion(now) {
+      var vh = window.innerHeight, y = window.scrollY;
+      if (reduce.matches) {
+        heroMedia.style.transform = '';
+        tilts.forEach(function (el) { el.style.transform = ''; });
+        gems.forEach(function (gm) { drawGem(gm, 0.42); });
+        loopOn = false; return;
+      }
+      var hp = clamp(y / Math.max(1, hero.offsetHeight));
+      heroMedia.style.transform = wide.matches
+        ? 'perspective(1400px) rotateY(' + (-hp * 14).toFixed(2) + 'deg) translateZ(' + (-hp * 140).toFixed(1) + 'px)'
+        : 'perspective(1000px) rotateX(' + (hp * 12).toFixed(2) + 'deg) translateZ(' + (-hp * 80).toFixed(1) + 'px)';
+      heroMedia.style.transformOrigin = wide.matches ? '0 50%' : '50% 0';
+      tilts.forEach(function (el) {
+        var top = el.getBoundingClientRect().top;
+        var q = clamp((vh - top) / (vh * 0.75));
+        el.style.transform = q >= 1 ? '' :
+          'perspective(1600px) rotateX(' + ((1 - q) * 14).toFixed(2) + 'deg) scale(' + (0.94 + q * 0.06).toFixed(4) + ')';
+      });
+      var t = (now || performance.now()) - t0, any = false;
+      gems.forEach(function (gm) {
+        if (!gm.visible) return; any = true;
+        drawGem(gm, 0.42 + gm.speed * (y * 0.0022 + t * 0.00018));
+      });
+      if (any) requestAnimationFrame(motion); else loopOn = false;
+    }
+    function kick() { if (!loopOn) { loopOn = true; requestAnimationFrame(motion); } }
+    gems.forEach(function (gm) { drawGem(gm, 0.42); });
+    window.addEventListener('scroll', kick, { passive: true });
+    window.addEventListener('resize', kick);
+    (reduce.addEventListener ? reduce.addEventListener('change', kick) : reduce.addListener(kick));
+    kick();
 
     /* ---------- Entrada dos círculos ---------- */
     var circles = document.querySelector('[data-circles]');
