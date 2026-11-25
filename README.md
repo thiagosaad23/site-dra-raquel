@@ -12,7 +12,7 @@ python3 -m http.server 8765
 
 ## Fotografias pendentes
 
-A logo oficial (monograma RA) está em `assets/logo-raquel-amaral.*`. Nenhuma foto original foi entregue para o projeto. Por isso, cada área fotográfica usa uma arte vinho e rosé com facetas lapidadas, marcada no HTML com `data-photo-slot`. Ao lado de cada uma há um comentário com o `<img>` pronto para substituí-la. Coloque os arquivos em `assets/`.
+A logo oficial (monograma RA) está em `assets/logo-raquel-amaral.*`. Nenhuma foto original foi entregue para o projeto. Por isso, cada área fotográfica usa uma arte vinho e rosé com um dente em traço fino, marcada no HTML com `data-photo-slot`. Ao lado de cada uma há um comentário com o `<img>` pronto para substituí-la. Coloque os arquivos em `assets/`.
 
 | Slot | Onde | Arquivo sugerido | Formato |
 |---|---|---|---|

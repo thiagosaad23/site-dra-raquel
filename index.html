@@ -10,7 +10,7 @@
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="Dra. Raquel Amaral | Ortodontia no Paraíso, São Paulo">
   <meta property="og:description" content="Consultório da Dra. Raquel Amaral no Paraíso, em São Paulo. Conheça os tratamentos para adultos e crianças, veja como chegar e agende pelo WhatsApp.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23653C49'/%3E%3Cpath d='M10 26 20 14h24l10 12-22 26z' fill='none' stroke='%23E9C9BF' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M10 26h44M20 14l6 12 6-12 6 12 6-12M26 26l6 26 6-26' fill='none' stroke='%23E9C9BF' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23653C49'/%3E%3Cpath d='M23 13c-6.5 0-10.5 4.8-10.5 11.6 0 5.8 2.4 9.9 4 14.6 1.8 5.6 2.4 13.3 4 19.6 1 4 2.9 6.2 5.3 6.2 2.9 0 3.7-3.7 4.5-8.8.8-4.8 1.3-8.2 2.9-8.2s2.1 3.4 2.9 8.2c.8 5.1 1.6 8.8 4.5 8.8 2.4 0 4.3-2.2 5.3-6.2 1.6-6.3 2.2-14 4-19.6 1.6-4.7 4-8.8 4-14.6C51.9 17.8 47.9 13 41.4 13c-4.5 0-6.9 2.4-10.1 2.4S27.5 13 23 13Z' transform='translate(0 -4) scale(1 .96)' fill='none' stroke='%23E9C9BF' stroke-width='2.6' stroke-linejoin='round'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -425,7 +425,7 @@
 
     /* ============ Cenas guiadas pela rolagem ============ */
     html, body { overflow-x: clip; }
-    .gem3d line { stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+    .tooth use { vector-effect: non-scaling-stroke; }
     .hero__stage, .about__stage, .close__stage { position: relative; }
     .hero__media { isolation: isolate; }
     .hero__over, .hero__sweep { display: none; }
@@ -522,13 +522,11 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
       <!-- Lapidação em vista lateral: mesa, coroa, cintura e pavilhão -->
-      <symbol id="gem" viewBox="0 0 400 360">
-        <g fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
-          <path d="M40 130 110 70h180l70 60-160 210z"/>
-          <path d="M40 130h320"/>
-          <path d="M40 130 110 70 120 130 155 70 160 130 200 70 240 130 245 70 280 130 290 70 360 130"/>
-          <path d="M120 130 200 340 280 130M160 130 200 340 240 130M40 130 200 340M360 130 200 340"/>
-          <path d="M80 130 200 300 320 130"/>
+      <symbol id="tooth" viewBox="0 0 200 240">
+        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+          <path vector-effect="non-scaling-stroke" d="M62 24C38 24 22 42 22 68c0 22 9 37 15 55 7 21 9 50 15 74 4 15 11 23 20 23 11 0 14-14 17-33 3-18 5-31 11-31s8 13 11 31c3 19 6 33 17 33 9 0 16-8 20-23 6-24 8-53 15-74 6-18 15-33 15-55 0-26-16-44-40-44-17 0-26 9-38 9S79 24 62 24Z"/>
+          <path vector-effect="non-scaling-stroke" d="M44 66c1-14 9-24 22-26" opacity=".7"/>
+          <path vector-effect="non-scaling-stroke" d="M182 6l2.6 7.4 7.4 2.6-7.4 2.6-2.6 7.4-2.6-7.4-7.4-2.6 7.4-2.6Z" opacity=".9"/>
         </g>
       </symbol>
       <symbol id="ico-wa" viewBox="0 0 24 24">
@@ -650,7 +648,7 @@
           -->
           <div class="hero__media" data-photo-slot="abertura">
             <svg class="facets hero__art" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" style="color:#E9C9BF">
-              <g class="gem3d" data-gem3d data-cx="350" data-cy="382" data-r="288" data-op=".95" data-speed="1"><use href="#gem" x="-10" y="130" width="720" height="648" opacity=".9"/></g>
+              <g class="tooth" data-tooth data-cx="300" data-cy="430" data-speed="1"><use href="#tooth" x="135" y="232" width="330" height="396" opacity="0.95"/></g>
             </svg>
 
             <!--
@@ -661,7 +659,7 @@
               <svg class="facets" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#E9C9BF">
                 
                 <rect x="900" y="170" width="300" height="375" fill="rgba(36,32,33,.16)" stroke="currentColor" stroke-opacity=".55"/>
-                <g class="gem3d" data-gem3d data-cx="1050" data-cy="340" data-r="110" data-op=".9" data-speed="-1.3"><use href="#gem" x="912" y="228" width="276" height="248" opacity=".85"/></g>
+                <g class="tooth" data-tooth data-cx="1050" data-cy="357" data-speed="-1.2"><use href="#tooth" x="965" y="255" width="170" height="204" opacity="0.9"/></g>
               </svg>
             </div>
 
@@ -714,7 +712,7 @@
             <div class="treat__art">
               <svg class="facets" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#E9C9BF">
                 <line x1="0" y1="96" x2="400" y2="96" stroke="currentColor" opacity=".3"/>
-                <g class="gem3d" data-gem3d data-cx="200" data-cy="284" data-r="176" data-op=".7" data-speed=".8"><use href="#gem" x="-20" y="130" width="440" height="396" opacity=".55"/></g>
+                <g class="tooth" data-tooth data-cx="250" data-cy="220" data-speed="0.8"><use href="#tooth" x="155" y="106" width="190" height="228" opacity="0.75"/></g>
               </svg>
               <span class="treat__count" data-count>01</span>
             </div>
@@ -761,7 +759,7 @@
         -->
         <div class="where__media" data-photo-slot="localizacao" aria-hidden="true">
           <svg class="facets" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" focusable="false" style="color:#653C49">
-            <g class="gem3d" data-gem3d data-cx="300" data-cy="185" data-r="120" data-op=".45" data-speed="-.9"><use href="#gem" x="150" y="80" width="300" height="270" opacity=".3"/></g>
+            <g class="tooth" data-tooth data-cx="120" data-cy="150" data-speed="-0.9"><use href="#tooth" x="55" y="72" width="130" height="156" opacity="0.5"/></g>
           </svg>
                     <span class="where__num">85</span>
         </div>
@@ -900,42 +898,13 @@
       });
     });
 
-    /* ---------- Diamante lapidado em 3D ---------- */
-    var SVGNS = 'http://www.w3.org/2000/svg';
-    var GEM = (function () {
-      var V = [], E = [], n = 8, i, a;
-      for (i = 0; i < n; i++) { a = i * Math.PI * 2 / n; V.push([0.56 * Math.cos(a), -0.44, 0.56 * Math.sin(a)]); }          // mesa
-      for (i = 0; i < n * 2; i++) { a = i * Math.PI / n; V.push([Math.cos(a), 0, Math.sin(a)]); }                            // cintura
-      V.push([0, 1.25, 0]);                                                                                                // culaça
-      var g = function (j) { return n + ((j + n * 2) % (n * 2)); }, c = n * 3;
-      for (i = 0; i < n; i++) {
-        E.push([i, (i + 1) % n]);                    // contorno da mesa
-        E.push([i, g(2 * i)], [i, g(2 * i + 1)], [i, g(2 * i - 1)]); // coroa
-      }
-      for (i = 0; i < n * 2; i++) { E.push([g(i), g(i + 1)]); E.push([g(i), c]); } // cintura e pavilhão
-      return { V: V, E: E };
-    })();
-    var gems = Array.prototype.map.call(document.querySelectorAll('[data-gem3d]'), function (el) {
-      el.innerHTML = '';
-      var lines = GEM.E.map(function () { var l = document.createElementNS(SVGNS, 'line'); el.appendChild(l); return l; });
-      return { el: el, lines: lines, cx: +el.dataset.cx, cy: +el.dataset.cy, r: +el.dataset.r, op: +el.dataset.op || 1,
-               speed: +el.dataset.speed || 1, host: el.closest('svg'), visible: true };
+    /* ---------- Dente com balanço suave ---------- */
+    var gems = Array.prototype.map.call(document.querySelectorAll('[data-tooth]'), function (el) {
+      return { el: el, cx: +el.dataset.cx, cy: +el.dataset.cy, speed: +el.dataset.speed || 1, host: el.closest('svg'), visible: true };
     });
-    function drawGem(gm, theta) {
-      var tilt = 0.2, ct = Math.cos(tilt), st = Math.sin(tilt), c = Math.cos(theta), s2 = Math.sin(theta), D = 5;
-      var P = GEM.V.map(function (v) {
-        var x = v[0] * c + v[2] * s2, z = -v[0] * s2 + v[2] * c;
-        var y = v[1] * ct - z * st, zz = v[1] * st + z * ct;
-        var f = D / (D + zz);
-        return [gm.cx + x * f * gm.r, gm.cy + y * f * gm.r, zz];
-      });
-      GEM.E.forEach(function (e, k) {
-        var A = P[e[0]], B = P[e[1]], l = gm.lines[k];
-        var depth = Math.max(0, Math.min(1, ((A[2] + B[2]) / 2 + 1) / 2));
-        l.setAttribute('x1', A[0].toFixed(1)); l.setAttribute('y1', A[1].toFixed(1));
-        l.setAttribute('x2', B[0].toFixed(1)); l.setAttribute('y2', B[1].toFixed(1));
-        l.setAttribute('stroke-opacity', (gm.op * (1 - depth * 0.72)).toFixed(3));
-      });
+    function drawGem(gm, theta) { // vira levemente no eixo vertical e flutua
+      var sx = Math.cos(.38 * Math.sin(theta)), dy = 6 * Math.sin(theta * .7);
+      gm.el.setAttribute('transform', 'translate(' + gm.cx + ' ' + (gm.cy + dy).toFixed(2) + ') scale(' + sx.toFixed(4) + ' 1) translate(' + (-gm.cx) + ' ' + (-gm.cy) + ')');
     }
     if ('IntersectionObserver' in window) {
       var gio = new IntersectionObserver(function (es) {
@@ -1106,13 +1075,13 @@
       var t = (now || performance.now()) - t0, y = window.scrollY, any = false;
       gems.forEach(function (gm) {
         if (!gm.visible) return;
-        if (motionOn) { any = true; drawGem(gm, .42 + gm.speed * (y * .0016 + t * .00016)); }
+        if (motionOn) { any = true; drawGem(gm, gm.speed * (y * .0012 + t * .0006)); }
       });
       if (any) requestAnimationFrame(frame); else loopOn = false;
     }
     function kick() { if (!loopOn) { loopOn = true; requestAnimationFrame(frame); } }
     measure();
-    gems.forEach(function (gm) { drawGem(gm, .42); });
+    gems.forEach(function (gm) { drawGem(gm, 0); });
     window.addEventListener('scroll', kick, { passive: true });
     window.addEventListener('resize', function () { measure(); lastFill = -1; kick(); });
     frame();
