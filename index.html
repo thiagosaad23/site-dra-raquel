@@ -270,20 +270,20 @@
     .acc__item { border-bottom: 1px solid var(--line-dark); }
     .acc__item h3 { font: inherit; }
     .acc__btn {
-      width: 100%; display: grid; grid-template-columns: 1fr 28px; align-items: center; gap: 8px;
-      padding: 22px 0; min-height: 64px;
+      width: 100%; display: grid; grid-template-columns: 28px 1fr 14px; column-gap: 16px; align-items: center; gap: 8px;
+      padding: 20px 0; min-height: 64px;
       background: none; border: 0; color: var(--ivory); text-align: left; cursor: pointer;
-      font-family: var(--serif); font-weight: 600; letter-spacing: -.03em; font-size: clamp(1.35rem, 4.6vw, 2.2rem); line-height: 1.1;
+      font-family: var(--serif); font-weight: 600; letter-spacing: -.025em; font-size: clamp(1.2rem, 4.2vw, 1.6rem); line-height: 1.15;
     }
     .acc__num { font-family: var(--sans); font-size: .75rem; letter-spacing: .12em; color: var(--ivory-muted); align-self: start; padding-top: .55em; }
-    .acc__icon { position: relative; width: 28px; height: 28px; border: 1px solid var(--line-dark); border-radius: 50%; justify-self: end; }
-    .acc__icon::before, .acc__icon::after { content: ""; position: absolute; top: 50%; left: 50%; width: 10px; height: 1.5px; margin: -.75px 0 0 -5px; background: var(--ivory); transition: transform .25s var(--ease); }
+    .acc__ico { width: 28px; height: 28px; color: var(--rose); }
+    .acc__icon { position: relative; width: 14px; height: 14px; justify-self: end; opacity: .6; transition: opacity .2s ease; }
+    .acc__icon::before, .acc__icon::after { content: ""; position: absolute; top: 50%; left: 0; width: 14px; height: 1px; margin-top: -.5px; background: var(--ivory); transition: transform .3s var(--ease); }
     .acc__icon::after { transform: rotate(90deg); }
-    .acc__btn[aria-expanded="true"] .acc__icon { background: var(--rose); border-color: var(--rose); }
-    .acc__btn[aria-expanded="true"] .acc__icon::before, .acc__btn[aria-expanded="true"] .acc__icon::after { background: var(--ink); }
+    .acc__btn:hover .acc__icon, .acc__btn[aria-expanded="true"] .acc__icon { opacity: 1; }
     .acc__btn[aria-expanded="true"] .acc__icon::after { transform: rotate(0deg); }
     .acc__btn:hover .acc__label { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
-    .acc__panel { padding: 0 0 28px 0; max-width: 52ch; color: var(--ivory-muted); }
+    .acc__panel { padding: 0 0 26px 44px; font-size: .9375rem; max-width: 52ch; color: var(--ivory-muted); }
     .acc__panel p { color: var(--ivory); opacity: .86; }
     @media (prefers-reduced-motion: no-preference) {
       .acc__panel:not([hidden]) { animation: fadeIn .35s ease both; }
@@ -341,8 +341,7 @@
     .where__actions { margin-top: 32px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
     .where__actions .btn { width: 100%; }
     .phone { display: inline-flex; flex-direction: column; min-height: 48px; justify-content: center; text-decoration: none; }
-    .phone span:first-child { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-muted); }
-    .phone span:last-child { font-size: 1.25rem; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+        .phone span { font-size: 1.25rem; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
 
     @media (min-width: 640px) { .where__actions .btn { width: auto; } }
     @media (min-width: 960px) {
@@ -359,12 +358,13 @@
     .shortcuts { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .shortcut { text-decoration: none; display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 10px 16px 10px 10px; border: 1px solid var(--line-dark); }
     .shortcut__dot { width: 40px; height: 40px; border-radius: 50%; flex: none; display: grid; place-items: center; }
-    .shortcut__dot svg { width: 18px; height: 18px; }
+    .shortcut__dot svg { width: 20px; height: 20px; }
     .shortcut__label { font-weight: 500; line-height: 1.2; }
     .shortcut--wa { grid-column: 1 / -1; background: var(--wine); border-color: var(--wine); min-height: 72px; justify-content: center; font-size: 1.0625rem; }
-    .shortcut--wa .shortcut__dot { background: var(--ivory); color: var(--wine); }
-    .shortcut--map .shortcut__dot { background: var(--ivory); color: var(--ink); }
-    .shortcut--ig .shortcut__dot { background: var(--rose); color: var(--ink); }
+    .shortcut__dot { border: 1px solid currentColor; }
+    .shortcut--wa .shortcut__dot { color: var(--ivory); }
+    .shortcut--map .shortcut__dot { color: var(--ivory); }
+    .shortcut--ig .shortcut__dot { color: var(--rose); }
     .shortcut:hover { border-color: var(--ivory-muted); }
     .shortcut--wa:hover { background: var(--wine-deep); }
     .circles { display: none; }
@@ -380,17 +380,19 @@
       }
       .circle__label { font-family: var(--serif); font-weight: 700; letter-spacing: -.035em; line-height: 1; }
       .circle__meta { margin-top: 12px; font-size: .8125rem; letter-spacing: .02em; line-height: 1.35; }
+      .circle__ico { width: 34px; height: 34px; margin-bottom: 14px; }
+      .circle--wa .circle__ico { width: 52px; height: 52px; margin-bottom: 18px; }
       .circle__go { margin-top: 18px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid currentColor; display: grid; place-items: center; }
       .circle__go svg { width: 14px; height: 14px; }
 
       .circle--wa { width: 380px; height: 380px; left: 6%; top: 40px; background: var(--wine); color: var(--ivory); }
-      .circle--wa .circle__label { font-size: 4rem; }
+      .circle--wa .circle__label { font-size: 3.2rem; }
       .circle--wa:hover { background: var(--wine-deep); }
       .circle--map { width: 260px; height: 260px; left: 52%; top: 300px; background: var(--ivory); color: var(--ink); }
-      .circle--map .circle__label { font-size: 2.6rem; }
+      .circle--map .circle__label { font-size: 1.9rem; }
       .circle--map:hover { box-shadow: inset 0 0 0 1px var(--ink), inset 0 0 0 6px var(--ivory), inset 0 0 0 7px var(--wine); }
       .circle--ig { width: 210px; height: 210px; left: 66%; top: 20px; background: var(--rose); color: var(--ink); }
-      .circle--ig .circle__label { font-size: 2.2rem; }
+      .circle--ig .circle__label { font-size: 1.6rem; }
       .circle--ig:hover { box-shadow: inset 0 0 0 1px var(--ink); }
       .circle--wa:focus-visible { outline-offset: 6px; }
       .circle:focus-visible { outline: 2px solid var(--ivory); outline-offset: 6px; }
@@ -410,6 +412,14 @@
     .footer__name { font-family: var(--serif); font-weight: 700; letter-spacing: -.02em; font-size: 1.125rem; color: var(--ivory); margin-right: auto; width: 100%; }
     .footer a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
     .footer a:hover { color: var(--ivory); }
+    .social { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; }
+    .social a {
+      width: 44px; height: 44px; min-height: 44px; justify-content: center; border-radius: 50%;
+      border: 1px solid var(--line-dark); color: var(--ivory); text-decoration: none;
+      transition: border-color .2s ease, background-color .2s ease;
+    }
+    .social a:hover { border-color: var(--rose); background: rgba(233, 201, 191, .08); }
+    .social svg { width: 20px; height: 20px; }
     @media (min-width: 640px) { .footer__name { width: auto; } }
 
 
@@ -522,7 +532,53 @@
         </g>
       </symbol>
       <symbol id="ico-wa" viewBox="0 0 24 24">
-        <path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.9 9.9 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.24 8.24 0 0 1 8.24 8.25c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23a7.46 7.46 0 0 1-1.38-1.72c-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.47-.29Z"/>
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M12 3.25a8.75 8.75 0 0 0-7.55 13.17L3.25 20.75l4.45-1.16A8.75 8.75 0 1 0 12 3.25Z"/>
+          <path d="M9.1 8.2c.35-.5.85-.45 1.05-.1l.8 1.6c.15.3.05.6-.15.85l-.5.55c.55 1.05 1.4 1.9 2.45 2.45l.55-.5c.25-.2.55-.3.85-.15l1.6.8c.35.2.4.7-.1 1.05-.95.65-2.3.6-3.6-.2a8.3 8.3 0 0 1-2.75-2.75c-.8-1.3-.85-2.65-.2-3.6Z"/>
+        </g>
+      </symbol>
+      <symbol id="ico-fb" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+          <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
+          <path d="M15.5 7.75h-1.4c-1.15 0-1.85.7-1.85 1.85v10.9M10 12.5h5"/>
+        </g>
+      </symbol>
+      <symbol id="ico-mail" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+          <rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/>
+          <path d="m4.5 7.5 7.5 5.5 7.5-5.5"/>
+        </g>
+      </symbol>
+      <!-- Tratamentos -->
+      <symbol id="t-orto" viewBox="0 0 32 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M2.5 16h27"/>
+          <rect x="4.5" y="8.5" width="6.5" height="15" rx="2"/>
+          <rect x="12.75" y="8.5" width="6.5" height="15" rx="2"/>
+          <rect x="21" y="8.5" width="6.5" height="15" rx="2"/>
+        </g>
+      </symbol>
+      <symbol id="t-align" viewBox="0 0 32 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M5.5 7.5c0 11 4.5 17 10.5 17s10.5-6 10.5-17"/>
+          <path d="M10 7.5c0 8 2.5 12.5 6 12.5s6-4.5 6-12.5"/>
+          <path d="M5.5 7.5H10M22 7.5h4.5"/>
+        </g>
+      </symbol>
+      <symbol id="t-maxi" viewBox="0 0 32 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M10 6.5c0 10 2.5 16 6 16s6-6 6-16"/>
+          <path d="M3.5 15H7M5 13l-2 2 2 2M28.5 15H25M27 13l2 2-2 2"/>
+        </g>
+      </symbol>
+      <symbol id="t-shine" viewBox="0 0 32 32">
+        <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M14 4.5l2.1 6.4 6.4 2.1-6.4 2.1L14 21.5l-2.1-6.4-6.4-2.1 6.4-2.1Z"/>
+          <path d="M24 19.5l1 3 3 1-3 1-1 3-1-3-3-1 3-1Z"/>
+        </g>
+      </symbol>
+      <symbol id="t-tooth" viewBox="0 0 32 32">
+        <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M11 5c-3.3 0-5.5 2.4-5.5 5.9 0 3.4 1.4 5.6 2.2 8.5.9 3.4 1.3 7.6 3.4 7.6 1.9 0 2.1-5.6 4.9-5.6s3 5.6 4.9 5.6c2.1 0 2.5-4.2 3.4-7.6.8-2.9 2.2-5.1 2.2-8.5C26.5 7.4 24.3 5 21 5c-2.2 0-3.3 1.3-5 1.3S13.2 5 11 5Z"/>
       </symbol>
       <symbol id="ico-arrow" viewBox="0 0 16 16">
         <path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5"/>
@@ -668,23 +724,23 @@
         <div class="treat__list-col">
           <div class="acc" data-acc>
             <div class="acc__item" data-reveal style="--d:0.10s">
-              <h3><button class="acc__btn" type="button" aria-expanded="true" aria-controls="t1" id="t1-btn"><span class="acc__label">Ortodontia</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="true" aria-controls="t1" id="t1-btn"><svg class="acc__ico" aria-hidden="true" focusable="false"><use href="#t-orto"/></svg><span class="acc__label">Ortodontia</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t1" role="region" aria-labelledby="t1-btn"><p>Avaliação do alinhamento dos dentes e da mordida. Na consulta, você pode conversar sobre as opções de acompanhamento para o seu caso.</p></div>
             </div>
             <div class="acc__item" data-reveal style="--d:0.16s">
-              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t2" id="t2-btn"><span class="acc__label">Alinhadores Invisalign</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t2" id="t2-btn"><svg class="acc__ico" aria-hidden="true" focusable="false"><use href="#t-align"/></svg><span class="acc__label">Alinhadores Invisalign</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t2" role="region" aria-labelledby="t2-btn" hidden><p>Quer saber se os alinhadores são uma opção para você? A indicação depende de uma avaliação individual.</p></div>
             </div>
             <div class="acc__item" data-reveal style="--d:0.22s">
-              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t3" id="t3-btn"><span class="acc__label">Ortopedia funcional dos maxilares</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t3" id="t3-btn"><svg class="acc__ico" aria-hidden="true" focusable="false"><use href="#t-maxi"/></svg><span class="acc__label">Ortopedia funcional dos maxilares</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t3" role="region" aria-labelledby="t3-btn" hidden><p>Avaliação do desenvolvimento dos maxilares e da mordida, com orientação sobre o acompanhamento indicado.</p></div>
             </div>
             <div class="acc__item" data-reveal style="--d:0.28s">
-              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t4" id="t4-btn"><span class="acc__label">Estética dental</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t4" id="t4-btn"><svg class="acc__ico" aria-hidden="true" focusable="false"><use href="#t-shine"/></svg><span class="acc__label">Estética dental</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t4" role="region" aria-labelledby="t4-btn" hidden><p>Uma consulta para conversar sobre o que você gostaria de mudar na aparência dos dentes e conhecer as possibilidades para o seu caso.</p></div>
             </div>
             <div class="acc__item" data-reveal style="--d:0.34s">
-              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t5" id="t5-btn"><span class="acc__label">Clínica geral</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
+              <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="t5" id="t5-btn"><svg class="acc__ico" aria-hidden="true" focusable="false"><use href="#t-tooth"/></svg><span class="acc__label">Clínica geral</span><span class="acc__icon" aria-hidden="true"></span></button></h3>
               <div class="acc__panel" id="t5" role="region" aria-labelledby="t5-btn" hidden><p>Atendimento para adultos e crianças que desejam cuidar da saúde bucal ou avaliar uma queixa específica.</p></div>
             </div>
           </div>
@@ -755,14 +811,16 @@
         <!-- Desktop: três círculos -->
         <div class="circles" data-circles>
           <a class="circle circle--wa" href="https://wa.me/5511984093430?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Dra.%20Raquel%20Amaral%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+            <svg class="circle__ico" aria-hidden="true" focusable="false"><use href="#ico-wa"/></svg>
             <span class="circle__label">WhatsApp</span>
-            <span class="circle__go" aria-hidden="true"><svg><use href="#ico-arrow"/></svg></span>
           </a>
           <a class="circle circle--ig" href="https://www.instagram.com/draraquelamaralortodontia/" target="_blank" rel="noopener">
+            <svg class="circle__ico" aria-hidden="true" focusable="false"><use href="#ico-ig"/></svg>
             <span class="circle__label">Instagram</span>
             <span class="sr-only"> (abre em nova aba)</span>
           </a>
           <a class="circle circle--map" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pra%C3%A7a+Oswaldo+Cruz%2C+47%2C+Para%C3%ADso%2C+S%C3%A3o+Paulo%2C+SP%2C+04004-070" target="_blank" rel="noopener">
+            <svg class="circle__ico" aria-hidden="true" focusable="false"><use href="#ico-pin"/></svg>
             <span class="circle__label">Como chegar</span>
             <span class="sr-only"> (abre o Google Maps)</span>
           </a>
@@ -775,8 +833,12 @@
         <div class="footer__row">
           <p class="footer__name"><img class="footer__logo" src="assets/logo-raquel-amaral-sm.webp" width="367" height="307" alt="" loading="lazy" decoding="async"> Dra. Raquel Amaral</p>
           <p>CRO-SP&nbsp;58881</p>
-          <a href="mailto:raquelfteixeira@gmail.com">raquelfteixeira@gmail.com</a>
-          <a href="https://www.facebook.com/Draraquelortodontia" target="_blank" rel="noopener">Facebook<span class="sr-only"> (abre em nova aba)</span></a>
+          <ul class="social" aria-label="Redes e contato">
+            <li><a href="https://www.instagram.com/draraquelamaralortodontia/" target="_blank" rel="noopener" title="Instagram"><svg aria-hidden="true" focusable="false"><use href="#ico-ig"/></svg><span class="sr-only">Instagram (abre em nova aba)</span></a></li>
+            <li><a href="https://www.facebook.com/Draraquelortodontia" target="_blank" rel="noopener" title="Facebook"><svg aria-hidden="true" focusable="false"><use href="#ico-fb"/></svg><span class="sr-only">Facebook (abre em nova aba)</span></a></li>
+            <li><a href="https://wa.me/5511984093430?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Dra.%20Raquel%20Amaral%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" title="WhatsApp"><svg aria-hidden="true" focusable="false"><use href="#ico-wa"/></svg><span class="sr-only">WhatsApp (abre em nova aba)</span></a></li>
+            <li><a href="mailto:raquelfteixeira@gmail.com" title="raquelfteixeira@gmail.com"><svg aria-hidden="true" focusable="false"><use href="#ico-mail"/></svg><span class="sr-only">E-mail: raquelfteixeira@gmail.com</span></a></li>
+          </ul>
         </div>
       </footer>
     </section>
